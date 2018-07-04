@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gestion des absences</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+
+        body{
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+            background-color: #204d74;
+        }
+
+        body #logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 260px;
+            height: 260px;
+            margin: -130px 0 0 -130px;
+            border-radius: 50%;
+            background-color: #fff;
+
+        }
+        body #logo #green-circle-1 {
+            position: absolute;
+            width: 252px;
+            height: 252px;
+            margin: 4px 0 0 4px;
+            border-radius: 50%;
+            background-color: #28324e;
+
+        }
+        body #logo #green-circle-1 #green-circle-2 {
+            position: absolute;
+            width: 238px;
+            height: 238px;
+            margin: 4px 0 0 4px;
+            border-radius: 50%;
+            background-color: #475577;
+            border: 3px solid #fff;
+
+        }
+        body #logo #green-circle-1 #green-circle-2 p {
+            margin: 0;
+            padding: 0;
+            color: #d1d5d8;
+
+        }
+
+        body #logo #green-circle-1 #green-circle-2 .top {
+            font-size: 40px;
+            height: 119px;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 40px;
+            margin-left: -20px;
+            line-height: 45px;
+            text-align: center;
+        }
+        body #logo #green-circle-1 #green-circle-2 .bottom {
+            font-size: 40px;
+            height: 119px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 40px;
+            margin-left: -20px;
+            line-height: 195px;
+            text-align: center;
+            transform-origin: top center;
+            font-weight: 900;
+        }
+
+        body #logo #green-circle-1 #green-circle-2 #white-circle-1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 134px;
+            height: 134px;
+            margin: -70px 0 0 -70px;
+            border-radius: 50%;
+            border: solid 3px #fff;
+            background-color: #fff;
+            overflow: hidden;
+        }
+        body #logo #green-circle-1 #green-circle-2 #white-circle-1 #box {
+            position: absolute;
+            top: 160px;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background-color: #000;
+            background-image: url("http://snh.rs/sb.png");
+            background-repeat: no-repeat;
+            background-position: bottom right;
+        }
+        body #logo #green-circle-1 #green-circle-2 #white-circle-1 #box .circle {
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 0;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #4CAF50;
+        }
+
+
+        .button {
+            background-color: #28324e; /* Green */
+            border: none;
+            color: white;
+            padding: 7px 36px;
+            text-align: center;
+            text-decoration: solid;
+            display: inline-block;
+            font-size: 16px;
+            font-family: Times;
+
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+
+        .button2 {width: 50%;}
+        .choix{
+            padding-left:450px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<ul>
+    <li><a href="{{ path('user_index') }}"></a></li>
+
+    <li style="float:right"><a class="active" href="{{ path('user_list_absence_tous') }}">VOIR TOUS</a></li>
+    <li style="float:right"><a class="active" href="{{ path('user_list_absence_classe') }}">PAR CLASSE</a></li>
+    <li style="float:right"><a class="active" href="{{ path('user_list_absence_etudiant') }}">PAR ETUDIANT</a></li>
+
+</ul>
+
+<!-- Navbar
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('user_index') }}"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ path('user_list_absence_etudiant') }}">PAR ETUDIANT</a></li>
+                <li><a href="{{ path('user_list_absence_tous') }}">TOUS</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+-->
+
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+
+    
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<!--
+<div class="container-fluid bg-2 text-center">
+    <div class="container">
+
+        <div class="btn-group btn-group-justified">
+            <a href="{{ path('user_list_absence_etudiant') }}" class="btn btn-info">Absences par etudiant</a>
+            <a href="{{ path('user_list_absence_tous') }}" class="btn btn-info">Toutes les absences</a>
+
+        </div>
+-->
+        <div class="choix">
+            <a href="{{ path('user_list_absence_etudiant') }}"><button class="button button2">CONSULTATION PAR ETUDIANT</button></a>
+            <a href="{{ path('user_list_absence_classe') }}"><button class="button button2">CONSULTER PAR CLASSE</button></a>
+            <a href="{{ path('user_list_absence_tous') }}"><button class="button button2">CONSULTER TOUS</button></a>
+        </div>
+
+
+
+
+</body>
+</html>
