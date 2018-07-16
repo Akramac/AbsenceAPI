@@ -38,7 +38,7 @@ class AbsenceData implements FixtureInterface {
       $Absence4=setEtudiant_id('1');
       $Absence4=setClass_id('2');
       $Absence4=setDate("2018-07-08");
-      $Absence4=setNb_vacation('2');
+      $Absence4=setNb_vacation('3');
 
       $manager->persist($Absence4);
 
